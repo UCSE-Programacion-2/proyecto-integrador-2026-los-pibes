@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Krass Coffee — Detalle de Producto</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        // NUEVO (paleta Krass)
+      colors: {
+        'kc-dark':   '#2C1A0E',   // navbar, footer
+        'kc-brown':  '#5C3317',   // cards, secciones secundarias
+        'kc-amber':  '#F5C518',   // botones, highlights
+        'kc-gold':   '#D4A017',   // hover de botones
+        'kc-cream':  '#F5ECD7',   // fondo general
+        'kc-white':  '#FDFAF5',   // fondo de cards
+        'kc-text':   '#1A1A1A',   // texto cuerpo
+        'kc-muted':  '#6B6B6B',   // subtítulos
+      },
+        fontFamily:{display:['Playfair Display','serif'],body:['Inter','sans-serif']}
+      }}
+    }
+  </script>
+  <style>
+    body{background-color: #1A0A00; color:#F5ECD7;font-family:'Inter',sans-serif;}
+    .nav-link{position:relative;}
+    .nav-link::after { background: #C8860A; }
+    .nav-link:hover::after{width:100%;}
+    .thumb-active{border-color:#C8860A!important;}
+    .qty-btn:hover { background-color: #C8860A; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 bg-kc-dark/95 border-b border-kc-brown/40 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2 group">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="12" ry="9" fill="#3D1F00" stroke="#C8860A" stroke-width="1.5"/><path d="M16 9 C16 9 14 5 16 3 C18 1 20 4 18 6" stroke="#C8860A" stroke-width="1.5" stroke-linecap="round" fill="none"/><ellipse cx="16" cy="18" rx="6" ry="4" fill="#C8860A" opacity="0.3"/></svg>
+          <span class="font-display text-xl font-bold text-kc-cream group-hover:text-kc-amber transition-colors">Krass <span class="text-kc-amber">Coffee</span></span>
+        </a>
+        <ul class="hidden md:flex items-center gap-8 font-body text-sm font-medium text-kc-cream/80">
+          <li><a href="index.html" class="nav-link hover:text-kc-cream transition-colors">Inicio</a></li>
+          <li><a href="product-detail.html" class="nav-link text-kc-amber">Productos</a></li>
+          <li><a href="cart.html" class="nav-link hover:text-kc-cream transition-colors">Carrito</a></li>
+          <li><a href="checkout.html" class="nav-link hover:text-kc-cream transition-colors">Checkout</a></li>
+          <li><a href="admin.html" class="nav-link hover:text-kc-cream transition-colors">Admin</a></li>
+        </ul>
+        <div class="flex items-center gap-4">
+          <a href="cart.html" class="relative text-kc-cream/80 hover:text-kc-amber transition-colors">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-kc-amber text-kc-black text-[10px] font-bold rounded-full flex items-center justify-center">3</span>
+          </a>
+          <button id="menu-btn" class="md:hidden text-kc-cream/80 hover:text-kc-amber">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-kc-brown/40 mt-1 pt-3">
+        <ul class="flex flex-col gap-3 font-body text-sm text-kc-cream/80">
+          <li><a href="index.html" class="block hover:text-kc-amber py-1">Inicio</a></li>
+          <li><a href="product-detail.html" class="block text-kc-amber py-1">Productos</a></li>
+          <li><a href="cart.html" class="block hover:text-kc-amber py-1">Carrito</a></li>
+          <li><a href="checkout.html" class="block hover:text-kc-amber py-1">Checkout</a></li>
+          <li><a href="admin.html" class="block hover:text-kc-amber py-1">Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Breadcrumb -->
+      <nav class="font-body text-xs text-kc-cream/40 mb-8 flex items-center gap-2">
+        <a href="index.html" class="hover:text-kc-amber transition-colors">Inicio</a>
+        <span>/</span>
+        <a href="#" class="hover:text-kc-amber transition-colors">Café</a>
+        <span>/</span>
+        <span class="text-kc-cream/70">Flat White</span>
+      </nav>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+        <!-- IMAGE COLUMN -->
+        <div>
+          <!-- Main image -->
+          <div class="aspect-square bg-gradient-to-br from-kc-brown to-kc-black rounded-2xl border border-kc-brown/50 flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-kc-amber/5 rounded-2xl"></div>
+            <img src="img/flat white 250ml.jpg" alt="Flat White" class="w-full h-full object-cover rounded-2xl relative z-10"/>
+            <div class="absolute top-4 left-4">
+              <span class="bg-kc-amber text-kc-black text-xs font-bold px-3 py-1 rounded-full">NUEVO</span>
+            </div>
+          </div>
+
+          <!-- Thumbnails -->
+          <div class="grid grid-cols-4 gap-3 mt-4">
+            <button class="aspect-square bg-kc-brown/20 border-2 border-kc-brown/40 hover:border-kc-amber rounded-lg flex items-center justify-center transition-colors">
+              <img src="img/cafe con leche y sandwich de rucula.webp" alt="Cafe con leche y sandwich de rucula" class="w-full h-full object-cover"/>
+            </button>
+            <button class="aspect-square bg-kc-brown/20 border-2 border-kc-brown/40 hover:border-kc-amber rounded-lg flex items-center justify-center transition-colors">
+              <img src="img/latte saborizado de vainilla.webp" alt="Latte saborizado de vainilla" class="w-full h-full object-cover"/>
+            </button>
+            <button class="aspect-square bg-kc-brown/20 border-2 border-kc-brown/40 hover:border-kc-amber rounded-lg flex items-center justify-center transition-colors">
+              <img src="img/crumble de frutos rojos.webp" alt="Crumble de frutos rojos" class="w-full h-full object-cover"/>
+            </button>
+            <button class="aspect-square bg-kc-brown/20 border-2 border-kc-brown/40 hover:border-kc-amber rounded-lg flex items-center justify-center transition-colors">
+              <img src="img/scon con queso.webp" alt="Scon con queso" class="w-full h-full object-cover"/>
+            </button>
+          </div>
+        </div>
+
+        <!-- INFO COLUMN -->
+        <div class="flex flex-col gap-6">
+
+          <!-- Category + name -->
+          <div>
+            <p class="font-body text-xs uppercase tracking-widest text-kc-amber mb-2">Café · Flat White</p>
+            <h1 class="font-display text-4xl sm:text-5xl font-bold text-kc-cream leading-tight">Flat White</h1>
+            <!-- Stars -->
+            <div class="flex items-center gap-2 mt-3">
+              <div class="flex gap-0.5">
+                <span class="text-kc-amber">★★★★★</span>
+              </div>
+              <span class="font-body text-sm text-kc-cream/40">(47 reseñas)</span>
+            </div>
+          </div>
+
+          <!-- Price -->
+          <div class="flex items-baseline gap-3">
+            <span class="font-display text-4xl font-bold text-kc-amber">$5.100</span>
+            <span class="font-body text-sm text-kc-cream/40 line-through">$6.000</span>
+            <span class="font-body text-xs bg-kc-amber/20 text-kc-amber px-2 py-0.5 rounded">−15%</span>
+          </div>
+
+          <!-- Description -->
+          <div class="font-body text-kc-cream/70 text-sm leading-relaxed space-y-2">
+            <p>Proveniente de las alturas de Yirgacheffe, este espresso de proceso natural exhibe una complejidad aromática extraordinaria. Cada taza revela capas de <strong class="text-kc-cream">frutos rojos silvestres</strong>, <strong class="text-kc-cream">jazmín</strong> y un fondo de <strong class="text-kc-cream">chocolate oscuro</strong>.</p>
+            <p>Tostado medio en nuestra planta de Buenos Aires, conservando la acidez brillante y el cuerpo sedoso que caracterizan los mejores cafés etíopes del mundo.</p>
+          </div>
+
+          <!-- Attributes -->
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-kc-brown/30 rounded-lg p-3 text-center">
+              <p class="text-kc-amber text-xs uppercase tracking-wider mb-1">Tostado</p>
+              <p class="font-body text-sm text-kc-cream font-medium">Medio</p>
+            </div>
+            <div class="bg-kc-brown/30 rounded-lg p-3 text-center">
+              <p class="text-kc-amber text-xs uppercase tracking-wider mb-1">Proceso</p>
+              <p class="font-body text-sm text-kc-cream font-medium">Natural</p>
+            </div>
+            <div class="bg-kc-brown/30 rounded-lg p-3 text-center">
+              <p class="text-kc-amber text-xs uppercase tracking-wider mb-1">Pureza</p>
+              <p class="font-body text-sm text-kc-cream font-medium">92%</p>
+            </div>
+          </div>
+
+          <!-- Selector de tamaño -->
+          <div>
+            <p class="font-body text-xs uppercase tracking-wider text-kc-cream/50 mb-2">Tamaño</p>
+            <div class="flex gap-2">
+              <button class="px-4 py-2 border-2 border-kc-amber bg-kc-amber/10 text-kc-amber text-sm rounded font-medium">250ml</button>
+              <button class="px-4 py-2 border border-kc-brown/50 text-kc-cream/60 text-sm rounded font-medium hover:border-kc-amber hover:text-kc-amber transition-colors">450ml</button>
+              
+            </div>
+          </div>
+
+          <!-- Quantity + Add to Cart -->
+          <div class="flex flex-col sm:flex-row gap-3">
+            <div class="flex items-center border border-kc-brown/60 rounded overflow-hidden">
+              <button class="qty-btn w-11 h-11 bg-kc-brown/30 text-kc-cream text-lg flex items-center justify-center transition-colors">−</button>
+              <span id="qty" class="w-12 text-center text-kc-cream font-medium text-sm">1</span>
+              <button class="qty-btn w-11 h-11 bg-kc-brown/30 text-kc-cream text-lg flex items-center justify-center transition-colors">+</button>
+            </div>
+            <button id="add-btn" class="flex-1 py-3 bg-kc-amber hover:bg-kc-gold text-kc-black font-semibold text-sm rounded transition-all flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+              Agregar al Carrito
+            </button>
+          </div>
+
+          <!-- Small trust signals -->
+          <div class="flex flex-wrap gap-4 font-body text-xs text-kc-cream/40 pt-2 border-t border-kc-brown/30">
+            <span>🔒 Compra segura</span>
+            <span>☕ Recién elaborado</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-kc-brown/30 border-t border-kc-brown/50 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><ellipse cx="8" cy="5" rx="7" ry="4" stroke="#C8860A" stroke-width="1"/><path d="M8 1 Q10 5 8 9" stroke="#C8860A" stroke-width="0.8" fill="none"/></svg>
+          <p class="font-body text-xs text-kc-cream/30">© 2025 Krass Coffee.</p>
+        </div>
+        <p class="font-body text-xs text-kc-cream/20">Hecho con ☕ y mucho amor</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('menu-btn').addEventListener('click',()=>document.getElementById('mobile-menu').classList.toggle('hidden'));
+    let qty = 1;
+    document.querySelectorAll('.qty-btn').forEach((btn,i)=>{
+      btn.addEventListener('click',()=>{
+        if(i===0 && qty>1) qty--;
+        if(i===1) qty++;
+        document.getElementById('qty').textContent = qty;
+      });
+    });
+    document.getElementById('add-btn').addEventListener('click',function(){
+      this.textContent = '✓ Agregado al carrito';
+      this.classList.add('bg-green-600');
+      this.classList.remove('bg-kc-amber','hover:bg-kc-gold');
+      setTimeout(()=>{
+        this.innerHTML = '<svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>Agregar al Carrito';
+        this.classList.remove('bg-green-600');
+        this.classList.add('bg-kc-amber','hover:bg-kc-gold');
+      },2000);
+    });
+  </script>
+</body>
+</html>
