@@ -1,0 +1,24 @@
+:root {
+  /*  COLORES PRINCIPALES */
+  --kc-black: #1A0A00; /* Fondo principal del sitio */
+  --kc-cream: #F5ECD7; /* Texto principal */
+
+  /*  COLORES SECUNDARIOS */
+  --kc-brown: #3D1F00; /* Fondos de tarjetas, modales y bordes */
+  --kc-light: #FAF6EF; /* Alternativa clara */
+
+  /*  COLORES DE ACENTO */
+  --kc-amber: #C8860A; /* Botones principales, enlaces y destacados */
+  --kc-gold: #E8A020;  /* Efectos hover (al pasar el mouse) */
+
+  /*  TIPOGRAFÍAS (Familias) */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /*  TIPOGRAFÍAS (Tamaños base) */
+  --text-xs: 0.75rem;  /* 12px - Para etiquetas pequeñas */
+  --text-sm: 0.875rem; /* 14px - Para texto secundario */
+  --text-base: 1rem;   /* 16px - Texto normal del cuerpo */
+  --text-lg: 1.125rem; /* 18px - Para subtítulos */
+  --text-xl: 1.25rem;  /* 20px - Para títulos pequeños */
+}
