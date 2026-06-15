@@ -33,8 +33,8 @@
     </script>
     <style>
       body {
-        background-color: #f5ecd7;
-        color: #1a1a1a;
+        background-color: #2c1a0e;
+        color: #f5ecd7;
         font-family: 'Inter', sans-serif;
       }
       .nav-link {
@@ -55,9 +55,9 @@
       }
       input,
       select {
-        background-color: #fdfaf5;
-        border: 1px solid #c8b89a;
-        color: #1a1a1a;
+        background-color: #3d2210;
+        border: 1px solid rgba(92, 51, 23, 0.6);
+        color: #f5ecd7;
         border-radius: 0.375rem;
         padding: 0.625rem 0.75rem;
         width: 100%;
@@ -72,7 +72,7 @@
         box-shadow: 0 0 0 2px rgba(245, 197, 24, 0.15);
       }
       input::placeholder {
-        color: #aaa;
+        color: rgba(245, 236, 215, 0.3);
       }
       label {
         display: block;
@@ -80,7 +80,7 @@
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        color: #6b6b6b;
+        color: rgba(245, 236, 215, 0.5);
         margin-bottom: 0.35rem;
       }
       .step {
@@ -103,18 +103,18 @@
         color: #f5c518;
       }
       .step-inactive {
-        background: #e5d9c8;
-        color: #aaa;
+        background: rgba(92, 51, 23, 0.3);
+        color: rgba(245, 236, 215, 0.4);
       }
       .payment-card {
-        border: 1px solid #c8b89a;
+        border: 1px solid rgba(92, 51, 23, 0.5);
         border-radius: 0.75rem;
         padding: 1rem;
         cursor: pointer;
         transition:
           border-color 0.2s,
           background 0.2s;
-        background: #fdfaf5;
+        background: rgba(44, 26, 14, 0.6);
       }
       .payment-card:hover {
         border-color: #f5c518;
@@ -172,7 +172,9 @@
             <li>
               <a href="cart.html" class="nav-link hover:text-kc-cream transition-colors">Carrito</a>
             </li>
-            <li><a href="checkout.html" class="nav-link text-kc-amber">Checkout</a></li>
+            <li>
+              <a href="checkout.html" class="nav-link font-bold text-kc-cream">Checkout</a>
+            </li>
             <li>
               <a href="admin.html" class="nav-link hover:text-kc-cream transition-colors">Admin</a>
             </li>
@@ -235,27 +237,27 @@
               <ellipse cx="10" cy="6" rx="9" ry="5" stroke="#5C3317" stroke-width="1.2" />
               <path d="M10 1 Q12.5 6 10 11" stroke="#5C3317" stroke-width="0.8" fill="none" />
             </svg>
-            <h1 class="font-display text-3xl sm:text-4xl font-bold text-kc-text">Checkout</h1>
+            <h1 class="font-display text-3xl sm:text-4xl font-bold text-kc-cream">Checkout</h1>
           </div>
           <div class="flex items-center gap-3 font-body text-sm">
             <div class="flex items-center gap-2">
               <div class="step step-done">&#10003;</div>
-              <span class="text-kc-muted hidden sm:block">Carrito</span>
+              <span class="text-kc-cream/60 hidden sm:block">Carrito</span>
             </div>
             <div class="h-px w-8 bg-kc-amber/60"></div>
             <div class="flex items-center gap-2">
               <div class="step step-active">2</div>
-              <span class="text-kc-brown font-semibold hidden sm:block">Datos y envio</span>
+              <span class="text-kc-cream font-semibold hidden sm:block">Datos y envio</span>
             </div>
             <div class="h-px w-8 bg-kc-brown/30"></div>
             <div class="flex items-center gap-2">
               <div class="step step-inactive">3</div>
-              <span class="text-kc-muted hidden sm:block">Pago</span>
+              <span class="text-kc-cream/60 hidden sm:block">Pago</span>
             </div>
             <div class="h-px w-8 bg-kc-brown/30"></div>
             <div class="flex items-center gap-2">
               <div class="step step-inactive">4</div>
-              <span class="text-kc-muted hidden sm:block">Confirmacion</span>
+              <span class="text-kc-cream/60 hidden sm:block">Confirmacion</span>
             </div>
           </div>
         </div>
@@ -265,11 +267,11 @@
           <div class="grid lg:grid-cols-3 gap-8">
             <div class="lg:col-span-2 space-y-6">
               <!-- Datos personales -->
-              <section class="bg-kc-white border border-kc-brown/20 rounded-xl p-6 shadow-sm">
-                <h2 class="font-display text-xl font-semibold text-kc-text mb-5">
+              <section class="bg-kc-brown/20 border border-kc-brown/50 rounded-xl p-6 shadow-sm">
+                <h2 class="font-display text-xl font-semibold text-kc-cream mb-5">
                   Datos de contacto
                 </h2>
-                <div class="grid sm:grid-cols-2 gap-4">
+                <div class="grid sm:grid-cols-2 gap-4 text-sm">
                   <div><label>Nombre</label><input type="text" placeholder="Juan" /></div>
                   <div><label>Apellido</label><input type="text" placeholder="Perez" /></div>
                   <div><label>Email</label><input type="email" placeholder="juan@email.com" /></div>
@@ -280,11 +282,11 @@
               </section>
 
               <!-- Direccion -->
-              <section class="bg-kc-white border border-kc-brown/20 rounded-xl p-6 shadow-sm">
-                <h2 class="font-display text-xl font-semibold text-kc-text mb-5">
+              <section class="bg-kc-brown/20 border border-kc-brown/50 rounded-xl p-6 shadow-sm">
+                <h2 class="font-display text-xl font-semibold text-kc-cream mb-5">
                   Direccion de envio
                 </h2>
-                <div class="grid sm:grid-cols-2 gap-4">
+                <div class="grid sm:grid-cols-2 gap-4 text-sm">
                   <div class="sm:col-span-2">
                     <label>Calle y numero</label
                     ><input type="text" placeholder="Av. Corrientes 1234" />
@@ -313,7 +315,7 @@
                 </div>
                 <!-- Metodo de envio -->
                 <div class="mt-6">
-                  <p class="font-body text-xs uppercase tracking-wider text-kc-muted mb-3">
+                  <p class="font-body text-xs uppercase tracking-wider text-kc-cream/60 mb-3">
                     Metodo de envio
                   </p>
                   <div class="space-y-2">
@@ -322,8 +324,8 @@
                     >
                       <input type="radio" name="shipping" checked class="accent-kc-amber" />
                       <div class="flex-1">
-                        <p class="font-body text-sm font-medium text-kc-text">Envio estandar</p>
-                        <p class="font-body text-xs text-kc-muted mt-0.5">3-5 dias habiles</p>
+                        <p class="font-body text-sm font-medium text-kc-cream">Envio estandar</p>
+                        <p class="font-body text-xs text-kc-cream/60 mt-0.5">3-5 dias habiles</p>
                       </div>
                       <span class="font-body text-sm font-semibold text-green-600">Gratis</span>
                     </label>
@@ -332,18 +334,18 @@
                     >
                       <input type="radio" name="shipping" class="accent-kc-amber" />
                       <div class="flex-1">
-                        <p class="font-body text-sm font-medium text-kc-text">Envio express</p>
-                        <p class="font-body text-xs text-kc-muted mt-0.5">1-2 dias habiles</p>
+                        <p class="font-body text-sm font-medium text-kc-cream">Envio express</p>
+                        <p class="font-body text-xs text-kc-cream/60 mt-0.5">1-2 dias habiles</p>
                       </div>
-                      <span class="font-body text-sm font-semibold text-kc-brown">$800</span>
+                      <span class="font-body text-sm font-semibold text-kc-amber">$800</span>
                     </label>
                   </div>
                 </div>
               </section>
 
               <!-- Metodo de pago -->
-              <section class="bg-kc-white border border-kc-brown/20 rounded-xl p-6 shadow-sm">
-                <h2 class="font-display text-xl font-semibold text-kc-text mb-5">Metodo de pago</h2>
+              <section class="bg-kc-brown/20 border border-kc-brown/50 rounded-xl p-6 shadow-sm">
+                <h2 class="font-display text-xl font-semibold text-kc-cream mb-5">Metodo de pago</h2>
 
                 <div class="grid grid-cols-3 gap-3 mb-5">
                   <button
@@ -364,7 +366,7 @@
                         d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
                       />
                     </svg>
-                    <span class="font-body text-xs font-medium text-kc-text">Tarjeta</span>
+                    <span class="font-body text-xs font-medium text-kc-cream">Tarjeta</span>
                   </button>
                   <button
                     onclick="selectPayment('cash')"
@@ -384,7 +386,7 @@
                         d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
                       />
                     </svg>
-                    <span class="font-body text-xs font-medium text-kc-text">Efectivo</span>
+                    <span class="font-body text-xs font-medium text-kc-cream">Efectivo</span>
                   </button>
                   <button
                     onclick="selectPayment('transfer')"
@@ -404,12 +406,12 @@
                         d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
                       />
                     </svg>
-                    <span class="font-body text-xs font-medium text-kc-text">Transferencia</span>
+                    <span class="font-body text-xs font-medium text-kc-cream">Transferencia</span>
                   </button>
                 </div>
 
                 <!-- Panel tarjeta -->
-                <div id="panel-card" class="space-y-4">
+                <div id="panel-card" class="space-y-4 text-sm">
                   <div>
                     <label>Numero de tarjeta</label
                     ><input
@@ -450,7 +452,7 @@
                         AMEX
                       </div>
                     </div>
-                    <span class="text-xs text-kc-muted">Aceptamos todas las tarjetas</span>
+                    <span class="text-xs text-kc-cream/60">Aceptamos todas las tarjetas</span>
                   </div>
                 </div>
 
@@ -459,8 +461,8 @@
                   <div
                     class="bg-kc-amber/10 border border-kc-amber/40 rounded-lg p-4 font-body text-sm space-y-1"
                   >
-                    <p class="font-semibold text-kc-brown">Pagas al momento de la entrega</p>
-                    <p class="text-kc-muted">
+                    <p class="font-semibold text-kc-amber">Pagas al momento de la entrega</p>
+                    <p class="text-kc-cream/60">
                       El repartidor llevara cambio exacto. Si preferis tener el monto justo, el
                       total es <strong>$13.100</strong>.
                     </p>
@@ -472,14 +474,14 @@
                   <div
                     class="bg-kc-amber/10 border border-kc-amber/40 rounded-lg p-4 font-body text-sm space-y-2"
                   >
-                    <p class="font-semibold text-kc-brown">Datos para la transferencia</p>
-                    <div class="space-y-1 text-kc-muted">
-                      <p>CBU: <strong class="text-kc-text">0000003100012345678901</strong></p>
-                      <p>Alias: <strong class="text-kc-text">KRASS.COFFEE.AR</strong></p>
-                      <p>Titular: <strong class="text-kc-text">Krass Coffee S.R.L.</strong></p>
-                      <p>Monto: <strong class="text-kc-text">$13.100</strong></p>
+                    <p class="font-semibold text-kc-amber">Datos para la transferencia</p>
+                    <div class="space-y-1 text-kc-cream/60">
+                      <p>CBU: <strong class="text-kc-cream">0000003100012345678901</strong></p>
+                      <p>Alias: <strong class="text-kc-cream">KRASS.COFFEE.AR</strong></p>
+                      <p>Titular: <strong class="text-kc-cream">Krass Coffee S.R.L.</strong></p>
+                      <p>Monto: <strong class="text-kc-cream">$13.100</strong></p>
                     </div>
-                    <p class="text-xs text-kc-muted pt-1">
+                    <p class="text-xs text-kc-cream/60 pt-1">
                       Una vez realizada la transferencia, tu pedido se acreditara en 1-2 horas
                       habiles.
                     </p>
@@ -491,28 +493,28 @@
             <!-- Resumen lateral -->
             <div>
               <div
-                class="bg-kc-white border border-kc-brown/20 rounded-xl p-6 shadow-sm sticky top-24"
+                class="bg-kc-brown/20 border border-kc-brown/50 rounded-xl p-6 shadow-sm sticky top-24"
               >
-                <h2 class="font-display text-xl font-semibold text-kc-text mb-4">Tu pedido</h2>
+                <h2 class="font-display text-xl font-semibold text-kc-cream mb-4">Tu pedido</h2>
                 <div class="space-y-3 font-body text-sm">
-                  <div class="flex justify-between text-kc-muted">
-                    <span>Flat White 250ml x1</span><span>$5.100</span>
+                  <div class="flex justify-between text-kc-cream/60">
+                    <span>Flat White 250ml x1</span><span>$4.900</span>
                   </div>
-                  <div class="flex justify-between text-kc-muted">
+                  <div class="flex justify-between text-kc-cream/60">
                     <span>Latte de vainilla x1</span><span>$4.800</span>
                   </div>
-                  <div class="flex justify-between text-kc-muted">
-                    <span>Crumble frutos rojos x1</span><span>$3.200</span>
+                  <div class="flex justify-between text-kc-cream/60">
+                    <span>Cheesecake x1</span><span>$6.200</span>
                   </div>
-                  <div class="pt-3 border-t border-kc-brown/20 flex justify-between text-kc-muted">
-                    <span>Subtotal</span><span>$13.100</span>
+                  <div class="pt-3 border-t border-kc-brown/20 flex justify-between text-kc-cream/60">
+                    <span>Subtotal</span><span>$15.900</span>
                   </div>
-                  <div class="flex justify-between text-kc-muted">
+                  <div class="flex justify-between text-kc-cream/60">
                     <span>Envio</span><span class="text-green-600 font-medium">Gratis</span>
                   </div>
                   <div class="pt-3 border-t border-kc-brown/20 flex justify-between font-semibold">
-                    <span class="text-kc-text">Total</span>
-                    <span class="text-kc-brown text-lg font-bold">$13.100</span>
+                    <span class="text-kc-cream">Total</span>
+                    <span class="text-kc-amber text-lg font-bold">$15.900</span>
                   </div>
                 </div>
                 <button
@@ -521,7 +523,7 @@
                 >
                   Confirmar pedido &rarr;
                 </button>
-                <p class="mt-3 text-center font-body text-xs text-kc-muted">Pago 100% seguro</p>
+                <p class="mt-3 text-center font-body text-xs text-kc-cream/60">Pago 100% seguro</p>
               </div>
             </div>
           </div>
@@ -533,7 +535,7 @@
             class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-kc-amber/20 border border-kc-amber/40 mb-6"
           >
             <svg
-              class="w-10 h-10 text-kc-brown"
+              class="w-10 h-10 text-kc-amber"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -542,38 +544,38 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
           </div>
-          <h2 class="font-display text-4xl font-bold text-kc-text mb-2">Pedido confirmado!</h2>
-          <p class="font-body text-kc-muted text-lg mb-1">Gracias por tu compra.</p>
-          <p class="font-body text-kc-muted text-sm mb-8">
-            Numero de pedido: <strong class="text-kc-brown">#KC-2025-00847</strong>
+          <h2 class="font-display text-4xl font-bold text-kc-cream mb-2">Pedido confirmado!</h2>
+          <p class="font-body text-kc-cream/60 text-lg mb-1">Gracias por tu compra.</p>
+          <p class="font-body text-kc-cream/60 text-sm mb-8">
+            Numero de pedido: <strong class="text-kc-amber">#KC-2025-00847</strong>
           </p>
 
           <div
-            class="max-w-sm mx-auto bg-kc-white border border-kc-brown/20 rounded-xl p-6 text-left font-body text-sm space-y-3 mb-8 shadow-sm"
+            class="max-w-sm mx-auto bg-kc-brown/20 border border-kc-brown/50 rounded-xl p-6 text-left font-body text-sm space-y-3 mb-8 shadow-sm"
           >
-            <div class="flex justify-between text-kc-muted">
+            <div class="flex justify-between text-kc-cream/60">
               <span>Productos</span><span>3 items</span>
             </div>
-            <div class="flex justify-between text-kc-muted">
-              <span>Total pagado</span><span class="text-kc-brown font-bold">$13.100</span>
+            <div class="flex justify-between text-kc-cream/60">
+              <span>Total pagado</span><span class="text-kc-amber font-bold">$13.100</span>
             </div>
-            <div class="flex justify-between text-kc-muted">
+            <div class="flex justify-between text-kc-cream/60">
               <span>Entrega estimada</span><span>3-5 dias habiles</span>
             </div>
-            <div class="flex justify-between text-kc-muted">
+            <div class="flex justify-between text-kc-cream/60">
               <span>Confirmacion a</span><span>juan@email.com</span>
             </div>
           </div>
 
           <!-- Firma personalizada -->
           <div class="max-w-xs mx-auto pt-6 border-t border-kc-brown/25">
-            <p class="font-body text-xs uppercase tracking-widest text-kc-muted mb-4">
+            <p class="font-body text-xs uppercase tracking-widest text-kc-cream/60 mb-4">
               Con cariño, de parte de
             </p>
-            <p class="font-signature text-4xl text-kc-brown leading-relaxed">
+            <p class="font-signature text-4xl text-kc-amber leading-relaxed">
               Disfruta de tu pedido
             </p>
-            <p class="font-signature text-2xl text-kc-muted mt-1">~Krass Coffee</p>
+            <p class="font-signature text-2xl text-kc-cream/60 mt-1">~Krass Coffee</p>
           </div>
 
           <div class="mt-10">
@@ -593,16 +595,29 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <span class="font-display text-lg font-bold text-kc-cream">Krass <span class="text-kc-amber">Coffee</span></span>
-            <p class="mt-2 font-body text-sm text-kc-cream/50 leading-relaxed">Café de especialidad con alma. Cada taza cuenta una historia desde el origen hasta tu mesa.</p>
+            <span class="font-display text-lg font-bold text-kc-cream"
+              >Krass <span class="text-kc-amber">Coffee</span></span
+            >
+            <p class="mt-2 font-body text-sm text-kc-cream/50 leading-relaxed">
+              Café de especialidad con alma. Cada taza cuenta una historia desde el origen hasta tu
+              mesa.
+            </p>
           </div>
           <div>
-            <h4 class="font-body text-xs uppercase tracking-widest text-kc-amber mb-3">Navegación</h4>
+            <h4 class="font-body text-xs uppercase tracking-widest text-kc-amber mb-3">
+              Navegación
+            </h4>
             <ul class="space-y-2 font-body text-sm text-kc-cream/60">
               <li><a href="index.html" class="hover:text-kc-amber transition-colors">Inicio</a></li>
-              <li><a href="product-detail.html" class="hover:text-kc-amber transition-colors">Productos</a></li>
+              <li>
+                <a href="product-detail.html" class="hover:text-kc-amber transition-colors"
+                  >Productos</a
+                >
+              </li>
               <li><a href="cart.html" class="hover:text-kc-amber transition-colors">Carrito</a></li>
-              <li><a href="checkout.html" class="hover:text-kc-amber transition-colors">Checkout</a></li>
+              <li>
+                <a href="checkout.html" class="hover:text-kc-amber transition-colors">Checkout</a>
+              </li>
             </ul>
           </div>
           <div>
@@ -614,10 +629,17 @@
             </ul>
           </div>
         </div>
-        <div class="mt-8 pt-6 border-t border-kc-brown/40 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div
+          class="mt-8 pt-6 border-t border-kc-brown/40 flex flex-col sm:flex-row items-center justify-between gap-2"
+        >
           <div class="flex items-center gap-2">
-            <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><ellipse cx="8" cy="5" rx="7" ry="4" stroke="#F5C518" stroke-width="1"/><path d="M8 1 Q10 5 8 9" stroke="#F5C518" stroke-width="0.8" fill="none"/></svg>
-            <p class="font-body text-xs text-kc-cream/30">© 2026 Krass Coffee. Todos los derechos reservados.</p>
+            <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+              <ellipse cx="8" cy="5" rx="7" ry="4" stroke="#F5C518" stroke-width="1" />
+              <path d="M8 1 Q10 5 8 9" stroke="#F5C518" stroke-width="0.8" fill="none" />
+            </svg>
+            <p class="font-body text-xs text-kc-cream/30">
+              © 2026 Krass Coffee. Todos los derechos reservados.
+            </p>
           </div>
           <p class="font-body text-xs text-kc-cream/20">Hecho con ☕ y mucho amor</p>
         </div>
