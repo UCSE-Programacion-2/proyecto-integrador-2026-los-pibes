@@ -1,0 +1,12 @@
+:root {
+  --kc-dark:   #2C1A0E;
+  --kc-brown:  #5C3317;
+  --kc-amber:  #F5C518;
+  --kc-gold:   #D4A017;
+  --kc-cream:  #F5ECD7;
+  --kc-white:  #FDFAF5;
+  --kc-text:   #1A1A1A;
+  --kc-muted:  #6B6B6B;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}

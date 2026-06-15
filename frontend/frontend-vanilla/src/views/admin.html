@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Krass Coffee — Panel Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/variables.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'kc-dark': '#2C1A0E',
+              'kc-brown': '#5C3317',
+              'kc-amber': '#F5C518',
+              'kc-gold': '#D4A017',
+              'kc-cream': '#F5ECD7',
+              'kc-white': '#FDFAF5',
+              'kc-text': '#1A1A1A',
+              'kc-muted': '#6B6B6B',
+            },
+            fontFamily: {
+              display: ['Playfair Display', 'serif'],
+              body: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #2c1a0e;
+        color: var(--kc-cream);
+        font-family: var(--font-body);
+      }
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--kc-amber);
+        transition: width 0.3s;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      input,
+      select,
+      textarea {
+        background-color: var(--kc-dark);
+        border: 1px solid var(--kc-brown);
+        color: var(--kc-cream);
+        border-radius: 0.375rem;
+        padding: 0.625rem 0.75rem;
+        width: 100%;
+        font-family: var(--font-body);
+        font-size: 0.875rem;
+        transition: border-color 0.2s;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--kc-amber);
+      }
+      input::placeholder,
+      textarea::placeholder {
+        color: rgba(245, 236, 215, 0.2);
+      }
+      label {
+        display: block;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: rgba(245, 236, 215, 0.5);
+        margin-bottom: 0.35rem;
+      }
+      /* Modal */
+      #modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 100;
+        align-items: center;
+        justify-content: center;
+      }
+      #modal-overlay.open {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-kc-dark/95 border-b border-kc-brown/40 backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex items-center justify-between h-16">
+          <a href="index.html" class="flex items-center gap-2 group">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <ellipse
+                cx="16"
+                cy="18"
+                rx="12"
+                ry="9"
+                fill="#3D1F00"
+                stroke="#C8860A"
+                stroke-width="1.5"
+              />
+              <path
+                d="M16 9 C16 9 14 5 16 3 C18 1 20 4 18 6"
+                stroke="#C8860A"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                fill="none"
+              />
+              <ellipse cx="16" cy="18" rx="6" ry="4" fill="#C8860A" opacity="0.3" />
+            </svg>
+            <span
+              class="font-display text-xl font-bold text-kc-cream group-hover:text-kc-amber transition-colors"
+              >Krass <span class="text-kc-amber">Coffee</span></span
+            >
+          </a>
+          <ul
+            class="hidden md:flex items-center gap-8 font-body text-sm font-medium text-kc-cream/80"
+          >
+            <li>
+              <a href="index.html" class="nav-link hover:text-kc-cream transition-colors">Inicio</a>
+            </li>
+            <li>
+              <a href="product-detail.html" class="nav-link hover:text-kc-cream transition-colors"
+                >Productos</a
+              >
+            </li>
+            <li>
+              <a href="cart.html" class="nav-link hover:text-kc-cream transition-colors">Carrito</a>
+            </li>
+            <li>
+              <a href="checkout.html" class="nav-link hover:text-kc-cream transition-colors"
+                >Checkout</a
+              >
+            </li>
+            <li><a href="admin.html" class="nav-link text-kc-amber">Admin</a></li>
+          </ul>
+          <div class="flex items-center gap-3">
+            <span
+              class="hidden sm:flex items-center gap-2 font-body text-xs text-kc-cream/50 bg-kc-brown/30 border border-kc-brown/50 px-3 py-1 rounded-full"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-green-400 inline-block"></span>
+              Admin
+            </span>
+            <button id="menu-btn" class="md:hidden text-kc-cream/80 hover:text-kc-amber">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-kc-brown/40 mt-1 pt-3">
+          <ul class="flex flex-col gap-3 font-body text-sm text-kc-cream/80">
+            <li><a href="index.html" class="block hover:text-kc-amber py-1">Inicio</a></li>
+            <li>
+              <a href="product-detail.html" class="block hover:text-kc-amber py-1">Productos</a>
+            </li>
+            <li><a href="cart.html" class="block hover:text-kc-amber py-1">Carrito</a></li>
+            <li><a href="checkout.html" class="block hover:text-kc-amber py-1">Checkout</a></li>
+            <li><a href="admin.html" class="block text-kc-amber py-1">Admin</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 py-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Page header -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+          <div class="flex items-center gap-3">
+            <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
+              <ellipse cx="10" cy="6" rx="9" ry="5" stroke="#C8860A" stroke-width="1.2" />
+              <path d="M10 1 Q12.5 6 10 11" stroke="#C8860A" stroke-width="0.8" fill="none" />
+            </svg>
+            <div>
+              <p class="font-body text-xs text-kc-amber uppercase tracking-widest">Panel de</p>
+              <h1 class="font-display text-3xl font-bold text-kc-cream">Administración</h1>
+            </div>
+          </div>
+          <button
+            id="open-modal"
+            class="flex items-center gap-2 px-5 py-2.5 bg-kc-amber hover:bg-kc-gold text-kc-dark font-semibold text-sm rounded transition-colors"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            Crear Producto
+          </button>
+        </div>
+
+        <!-- Stats strip -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="bg-kc-brown/30 border border-kc-brown/50 rounded-xl p-4">
+            <p class="font-body text-xs text-kc-cream uppercase tracking-wider mb-1">Productos</p>
+            <p class="font-display text-3xl font-bold text-kc-amber">3</p>
+          </div>
+          <div class="bg-kc-brown/30 border border-kc-brown/50 rounded-xl p-4">
+            <p class="font-body text-xs text-kc-cream uppercase tracking-wider mb-1">Pedidos hoy</p>
+            <p class="font-display text-3xl font-bold text-kc-amber">14</p>
+          </div>
+          <div class="bg-kc-brown/30 border border-kc-brown/50 rounded-xl p-4">
+            <p class="font-body text-xs text-kc-cream uppercase tracking-wider mb-1">Ventas mes</p>
+            <p class="font-display text-3xl font-bold text-kc-amber">$124k</p>
+          </div>
+          <div class="bg-kc-brown/30 border border-kc-brown/50 rounded-xl p-4">
+            <p class="font-body text-xs text-kc-cream uppercase tracking-wider mb-1">Stock bajo</p>
+            <p class="font-display text-3xl font-bold text-red-400">1</p>
+          </div>
+        </div>
+
+        <!-- Search + filter bar -->
+        <div class="flex flex-col sm:flex-row gap-3 mb-6">
+          <div class="relative flex-1">
+            <svg
+              class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-kc-cream/30"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            <input
+              type="text"
+              placeholder="Buscar producto..."
+              class="pl-9 text-sm"
+              id="search-input"
+            />
+          </div>
+          <select class="sm:w-44 text-sm">
+            <option>Todas las categorías</option>
+            <option>Espresso</option>
+            <option>Dulce</option>
+          </select>
+        </div>
+
+        <!-- Products Table -->
+        <div class="overflow-x-auto rounded-xl border border-kc-brown/50">
+          <table class="w-full text-sm font-body" id="products-table">
+            <thead>
+              <tr class="bg-kc-brown/40 text-kc-cream/50 text-xs uppercase tracking-wider">
+                <th class="text-left px-4 py-3">Producto</th>
+                <th class="text-left px-4 py-3 hidden sm:table-cell">Categoría</th>
+                <th class="text-right px-4 py-3">Precio</th>
+                <th class="text-center px-4 py-3 hidden md:table-cell">Stock</th>
+                <th class="text-center px-4 py-3 hidden lg:table-cell">Estado</th>
+                <th class="text-right px-4 py-3">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-kc-brown/30" id="table-body">
+              <!-- Row 1 -->
+              <tr class="bg-kc-brown/10 hover:bg-kc-brown/20 transition-colors product-row">
+                <td class="px-4 py-3">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-9 h-9 rounded-lg bg-kc-brown/50 flex items-center justify-center flex-shrink-0"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+                        <ellipse
+                          cx="16"
+                          cy="18"
+                          rx="12"
+                          ry="9"
+                          fill="#3D1F00"
+                          stroke="#C8860A"
+                          stroke-width="1"
+                        />
+                        <ellipse cx="16" cy="18" rx="6" ry="4" fill="#C8860A" opacity="0.3" />
+                      </svg>
+                    </div>
+                    <span class="text-kc-cream font-medium">Flat White</span>
+                  </div>
+                </td>
+                <td class="px-4 py-3 text-kc-cream/50 hidden sm:table-cell">Espresso</td>
+                <td class="px-4 py-3 text-right font-semibold text-kc-amber">$4.900</td>
+                <td class="px-4 py-3 text-center text-kc-cream/70 hidden md:table-cell">30</td>
+                <td class="px-4 py-3 text-center hidden lg:table-cell">
+                  <span
+                    class="bg-green-900/40 text-green-400 text-xs px-2 py-0.5 rounded-full border border-green-800/50"
+                    >Activo</span
+                  >
+                </td>
+                <td class="px-4 py-3 text-right">
+                  <div class="flex items-center justify-end gap-2">
+                    <button
+                      class="edit-btn px-3 py-1.5 border border-kc-amber/40 text-kc-amber text-xs rounded hover:bg-kc-amber hover:text-kc-dark transition-colors font-medium"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      class="del-btn px-3 py-1.5 border border-red-800/50 text-red-400 text-xs rounded hover:bg-red-900/30 transition-colors font-medium"
+                    >
+                      Eliminar
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 2 -->
+              <tr class="bg-kc-brown/10 hover:bg-kc-brown/20 transition-colors product-row">
+                <td class="px-4 py-3">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-9 h-9 rounded-lg bg-kc-brown/50 flex items-center justify-center flex-shrink-0"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+                        <rect
+                          x="8"
+                          y="12"
+                          width="16"
+                          height="14"
+                          rx="3"
+                          fill="#3D1F00"
+                          stroke="#C8860A"
+                          stroke-width="1"
+                        />
+                        <path
+                          d="M24 16 Q29 16 29 20 Q29 24 24 24"
+                          stroke="#C8860A"
+                          stroke-width="1.2"
+                          fill="none"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                    </div>
+                    <span class="text-kc-cream font-medium">Latte Saborizado de Vainilla</span>
+                  </div>
+                </td>
+                <td class="px-4 py-3 text-kc-cream/50 hidden sm:table-cell">Espresso</td>
+                <td class="px-4 py-3 text-right font-semibold text-kc-amber">$4.800</td>
+                <td class="px-4 py-3 text-center text-kc-cream/70 hidden md:table-cell">60</td>
+                <td class="px-4 py-3 text-center hidden lg:table-cell">
+                  <span
+                    class="bg-green-900/40 text-green-400 text-xs px-2 py-0.5 rounded-full border border-green-800/50"
+                    >Activo</span
+                  >
+                </td>
+                <td class="px-4 py-3 text-right">
+                  <div class="flex items-center justify-end gap-2">
+                    <button
+                      class="edit-btn px-3 py-1.5 border border-kc-amber/40 text-kc-amber text-xs rounded hover:bg-kc-amber hover:text-kc-dark transition-colors font-medium"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      class="del-btn px-3 py-1.5 border border-red-800/50 text-red-400 text-xs rounded hover:bg-red-900/30 transition-colors font-medium"
+                    >
+                      Eliminar
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 3 -->
+              <tr class="bg-kc-brown/10 hover:bg-kc-brown/20 transition-colors product-row">
+                <td class="px-4 py-3">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-9 h-9 rounded-lg bg-kc-brown/50 flex items-center justify-center flex-shrink-0"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+                        <ellipse
+                          cx="16"
+                          cy="20"
+                          rx="10"
+                          ry="7"
+                          fill="#3D1F00"
+                          stroke="#C8860A"
+                          stroke-width="1"
+                        />
+                        <rect
+                          x="11"
+                          y="12"
+                          width="10"
+                          height="9"
+                          rx="1"
+                          fill="#3D1F00"
+                          stroke="#C8860A"
+                          stroke-width="0.8"
+                        />
+                      </svg>
+                    </div>
+                    <span class="text-kc-cream font-medium">Cheesecake</span>
+                  </div>
+                </td>
+                <td class="px-4 py-3 text-kc-cream/50 hidden sm:table-cell">Dulce</td>
+                <td class="px-4 py-3 text-right font-semibold text-kc-amber">$6.200</td>
+                <td class="px-4 py-3 text-center hidden md:table-cell">
+                  <span class="text-red-400 font-semibold">3</span>
+                </td>
+                <td class="px-4 py-3 text-center hidden lg:table-cell">
+                  <span
+                    class="bg-yellow-900/40 text-yellow-400 text-xs px-2 py-0.5 rounded-full border border-yellow-800/50"
+                    >Stock bajo</span
+                  >
+                </td>
+                <td class="px-4 py-3 text-right">
+                  <div class="flex items-center justify-end gap-2">
+                    <button
+                      class="edit-btn px-3 py-1.5 border border-kc-amber/40 text-kc-amber text-xs rounded hover:bg-kc-amber hover:text-kc-dark transition-colors font-medium"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      class="del-btn px-3 py-1.5 border border-red-800/50 text-red-400 text-xs rounded hover:bg-red-900/30 transition-colors font-medium"
+                    >
+                      Eliminar
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-4 flex items-center justify-between font-body text-xs text-kc-cream/40">
+          <span>Mostrando 3 de 3 productos</span>
+          <div class="flex gap-1">
+            <button
+              class="w-7 h-7 rounded border border-kc-amber bg-kc-amber/10 text-kc-amber flex items-center justify-center"
+            >
+              1
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ══════════════════════ MODAL: CREAR PRODUCTO ══════════════════════ -->
+    <div id="modal-overlay" role="dialog" aria-modal="true" aria-label="Crear Producto">
+      <div
+        class="bg-[#130800] border border-kc-brown/60 rounded-2xl w-full max-w-lg mx-4 p-6 max-h-[90vh] overflow-y-auto"
+      >
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-display text-2xl font-bold text-kc-cream">Crear Producto</h2>
+          <button id="close-modal" class="text-kc-cream/40 hover:text-kc-cream transition-colors">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <label>Nombre del producto *</label>
+            <input type="text" placeholder="ej. Espresso Etiopía Yirgacheffe" />
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label>Precio (ARS) *</label>
+              <input type="number" placeholder="1800" />
+            </div>
+            <div>
+              <label>Stock *</label>
+              <input type="number" placeholder="50" />
+            </div>
+          </div>
+          <div>
+            <label>Categoría</label>
+            <select>
+              <option value="">Seleccionar...</option>
+              <option>Espresso</option>
+              <option>Blend</option>
+              <option>Cold Brew</option>
+              <option>Accesorios</option>
+            </select>
+          </div>
+          <div>
+            <label>Descripción</label>
+            <textarea
+              rows="3"
+              placeholder="Descripción del producto, notas de cata, origen..."
+            ></textarea>
+          </div>
+          <div>
+            <label>Tostado</label>
+            <select>
+              <option value="">Seleccionar...</option>
+              <option>Ligero</option>
+              <option>Medio</option>
+              <option>Oscuro</option>
+            </select>
+          </div>
+          <div>
+            <label>Imagen (URL)</label>
+            <input type="url" placeholder="https://..." />
+          </div>
+
+          <div class="flex gap-3 pt-2">
+            <button
+              id="close-modal-2"
+              class="flex-1 py-2.5 border border-kc-brown/60 text-kc-cream/60 text-sm rounded hover:border-kc-cream/40 hover:text-kc-cream transition-colors"
+            >
+              Cancelar
+            </button>
+            <button
+              id="save-product"
+              class="flex-1 py-2.5 bg-kc-amber hover:bg-kc-gold text-kc-dark font-semibold text-sm rounded transition-colors"
+            >
+              Guardar producto
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="bg-kc-brown/30 border-t border-kc-brown/50 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Brand -->
+          <div>
+            <span class="font-display text-lg font-bold text-kc-cream"
+              >Krass <span class="text-kc-amber">Coffee</span></span
+            >
+            <p class="mt-2 font-body text-sm text-kc-cream/50 leading-relaxed">
+              Café de especialidad con alma. Cada taza cuenta una historia desde el origen hasta tu
+              mesa.
+            </p>
+          </div>
+
+          <!-- Links -->
+          <div>
+            <h4 class="font-body text-xs uppercase tracking-widest text-kc-amber mb-3">
+              Navegación
+            </h4>
+            <ul class="space-y-2 font-body text-sm text-kc-cream/60">
+              <li><a href="index.html" class="hover:text-kc-amber transition-colors">Inicio</a></li>
+              <li>
+                <a href="product-detail.html" class="hover:text-kc-amber transition-colors"
+                  >Productos</a
+                >
+              </li>
+              <li><a href="cart.html" class="hover:text-kc-amber transition-colors">Carrito</a></li>
+              <li>
+                <a href="checkout.html" class="hover:text-kc-amber transition-colors">Checkout</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h4 class="font-body text-xs uppercase tracking-widest text-kc-amber mb-3">Contacto</h4>
+            <ul class="space-y-2 font-body text-sm text-kc-cream/60">
+              <li>📍 Av. del Café 1420, CABA</li>
+              <li>📞 +54 11 4000-1234</li>
+              <li>✉️ hola@krasscoffee.com</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div
+          class="mt-8 pt-6 border-t border-kc-brown/40 flex flex-col sm:flex-row items-center justify-between gap-2"
+        >
+          <!-- Bean divider SVG -->
+          <div class="flex items-center gap-2">
+            <svg
+              width="16"
+              height="10"
+              viewBox="0 0 16 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <ellipse cx="8" cy="5" rx="7" ry="4" stroke="#C8860A" stroke-width="1" />
+              <path d="M8 1 Q10 5 8 9" stroke="#C8860A" stroke-width="0.8" fill="none" />
+            </svg>
+            <p class="font-body text-xs text-kc-cream/30">
+              © 2026 Krass Coffee. Todos los derechos reservados.
+            </p>
+          </div>
+          <p class="font-body text-xs text-kc-cream/20">Hecho con ☕ y mucho amor</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

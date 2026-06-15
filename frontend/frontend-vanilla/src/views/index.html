@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Krass Coffee — Inicio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'kc-dark': '#2C1A0E',
+              'kc-brown': '#5C3317',
+              'kc-amber': '#F5C518',
+              'kc-gold': '#D4A017',
+              'kc-cream': '#F5ECD7',
+              'kc-white': '#FDFAF5',
+              'kc-text': '#1A1A1A',
+              'kc-muted': '#6B6B6B',
+            },
+            fontFamily: {
+              display: ['Playfair Display', 'serif'],
+              body: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #2c1a0e;
+        color: #f5ecd7;
+        font-family: 'Inter', sans-serif;
+      }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: #c8860a;
+        transition: width 0.3s;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      .nav-link {
+        position: relative;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade-up {
+        animation: fadeUp 0.8s ease forwards;
+      }
+      .delay-1 {
+        animation-delay: 0.15s;
+        opacity: 0;
+      }
+      .delay-2 {
+        animation-delay: 0.3s;
+        opacity: 0;
+      }
+      .delay-3 {
+        animation-delay: 0.45s;
+        opacity: 0;
+      }
+      .card-hover {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(200, 134, 10, 0.18);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-kc-dark/95 border-b border-kc-brown/40 backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex items-center justify-between h-16">
+          <a href="index.html" class="flex items-center gap-2 group">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <ellipse
+                cx="16"
+                cy="18"
+                rx="12"
+                ry="9"
+                fill="#3D1F00"
+                stroke="#C8860A"
+                stroke-width="1.5"
+              />
+              <path
+                d="M16 9 C16 9 14 5 16 3 C18 1 20 4 18 6"
+                stroke="#C8860A"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                fill="none"
+              />
+              <ellipse cx="16" cy="18" rx="6" ry="4" fill="#C8860A" opacity="0.3" />
+            </svg>
+            <span
+              class="font-display text-xl font-bold text-kc-cream group-hover:text-kc-amber transition-colors"
+              >Krass <span class="text-kc-amber">Coffee</span></span
+            >
+          </a>
+          <ul
+            class="hidden md:flex items-center gap-8 font-body text-sm font-medium text-kc-cream/80"
+          >
+            <li>
+              <a
+                href="index.html"
+                class="nav-link hover:text-kc-cream transition-colors text-kc-amber"
+                >Inicio</a
+              >
+            </li>
+            <li>
+              <a href="product-detail.html" class="nav-link hover:text-kc-cream transition-colors"
+                >Productos</a
+              >
+            </li>
+            <li>
+              <a href="cart.html" class="nav-link hover:text-kc-cream transition-colors">Carrito</a>
+            </li>
+            <li>
+              <a href="checkout.html" class="nav-link hover:text-kc-cream transition-colors"
+                >Checkout</a
+              >
+            </li>
+            <li>
+              <a href="admin.html" class="nav-link hover:text-kc-cream transition-colors">Admin</a>
+            </li>
+          </ul>
+          <div class="flex items-center gap-4">
+            <a
+              href="cart.html"
+              class="relative text-kc-cream/80 hover:text-kc-amber transition-colors"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+                />
+              </svg>
+              <span
+                class="absolute -top-1 -right-1 w-4 h-4 bg-kc-amber text-kc-dark text-[10px] font-bold rounded-full flex items-center justify-center"
+                >3</span
+              >
+            </a>
+            <button
+              id="menu-btn"
+              class="md:hidden text-kc-cream/80 hover:text-kc-amber transition-colors"
+            >
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-kc-brown/40 mt-1 pt-3">
+          <ul class="flex flex-col gap-3 font-body text-sm text-kc-cream/80">
+            <li>
+              <a href="index.html" class="block hover:text-kc-amber py-1 transition-colors"
+                >Inicio</a
+              >
+            </li>
+            <li>
+              <a href="product-detail.html" class="block hover:text-kc-amber py-1 transition-colors"
+                >Productos</a
+              >
+            </li>
+            <li>
+              <a href="cart.html" class="block hover:text-kc-amber py-1 transition-colors"
+                >Carrito</a
+              >
+            </li>
+            <li>
+              <a href="checkout.html" class="block hover:text-kc-amber py-1 transition-colors"
+                >Checkout</a
+              >
+            </li>
+            <li>
+              <a href="admin.html" class="block hover:text-kc-amber py-1 transition-colors"
+                >Admin</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <!-- ══════════════════════ HERO / BANNER ══════════════════════ -->
+      <section class="relative overflow-hidden min-h-[88vh] flex items-center">
+        <!-- Background gradient -->
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-kc-dark via-kc-brown/60 to-kc-dark"
+        ></div>
+        <!-- Decorative circles -->
+        <div
+          class="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-kc-amber/5 blur-3xl pointer-events-none"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-kc-brown/40 blur-2xl pointer-events-none"
+        ></div>
+
+        <div
+          class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 grid lg:grid-cols-2 gap-12 items-center"
+        >
+          <!-- Text -->
+          <div>
+            <p class="fade-up font-body text-xs uppercase tracking-[0.25em] text-kc-amber mb-4">
+              Café de especialidad · San Salvador de Jujuy
+            </p>
+            <h1
+              class="fade-up delay-1 font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-kc-cream"
+            >
+              El café<br />
+              <em class="text-kc-amber not-italic">que despierta</em><br />
+              tus sentidos.
+            </h1>
+            <p
+              class="fade-up delay-2 mt-6 font-body text-kc-cream/60 text-lg leading-relaxed max-w-md"
+            >
+              Granos seleccionados en origen, tostados con precisión y servidos con pasión. Cada
+              sorbo es un viaje.
+            </p>
+            <div class="fade-up delay-3 mt-8 flex flex-wrap gap-4">
+              <a
+                href="product-detail.html"
+                class="px-6 py-3 bg-kc-amber hover:bg-kc-gold text-kc-dark font-semibold text-sm rounded transition-colors"
+              >
+                Ver productos
+              </a>
+              <a
+                href="#destacados"
+                class="px-6 py-3 border border-kc-cream/20 text-kc-cream/80 hover:border-kc-amber hover:text-kc-amber text-sm rounded transition-colors"
+              >
+                Descubrir más ↓
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero visual: stylized coffee cup illustration -->
+          <div class="flex justify-center lg:justify-end">
+            <div class="relative">
+              <!-- Glow -->
+              <div class="absolute inset-0 rounded-full bg-kc-amber/20 blur-3xl scale-110"></div>
+              <svg
+                width="340"
+                height="340"
+                viewBox="0 0 340 340"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="relative"
+              >
+                <!-- Saucer -->
+                <ellipse cx="170" cy="280" rx="110" ry="22" fill="#3D1F00" />
+                <ellipse cx="170" cy="278" rx="100" ry="16" fill="#4A2800" />
+                <!-- Cup body -->
+                <path
+                  d="M100 180 Q95 265 170 268 Q245 265 240 180 Z"
+                  fill="#3D1F00"
+                  stroke="#C8860A"
+                  stroke-width="1.5"
+                />
+                <!-- Cup highlight -->
+                <path
+                  d="M110 185 Q106 250 145 260"
+                  stroke="#C8860A"
+                  stroke-width="0.8"
+                  opacity="0.4"
+                  fill="none"
+                />
+                <!-- Handle -->
+                <path
+                  d="M240 200 Q275 200 275 225 Q275 250 240 248"
+                  stroke="#C8860A"
+                  stroke-width="2.5"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+                <!-- Coffee surface -->
+                <ellipse cx="170" cy="182" rx="68" ry="18" fill="#2A1200" />
+                <!-- Latte art: simple leaf -->
+                <ellipse cx="170" cy="182" rx="68" ry="18" fill="url(#coffee-grad)" />
+                <path
+                  d="M170 168 Q178 172 185 182 Q178 192 170 196 Q162 192 155 182 Q162 172 170 168Z"
+                  fill="#C8860A"
+                  opacity="0.25"
+                />
+                <path d="M170 168 L170 196" stroke="#C8860A" stroke-width="0.8" opacity="0.3" />
+                <!-- Steam lines -->
+                <path
+                  d="M145 160 Q140 145 148 132 Q155 120 150 108"
+                  stroke="#C8860A"
+                  stroke-width="1.5"
+                  fill="none"
+                  stroke-linecap="round"
+                  opacity="0.5"
+                />
+                <path
+                  d="M170 155 Q165 138 173 124 Q180 111 176 97"
+                  stroke="#C8860A"
+                  stroke-width="1.5"
+                  fill="none"
+                  stroke-linecap="round"
+                  opacity="0.5"
+                />
+                <path
+                  d="M195 160 Q190 143 198 130 Q205 118 201 104"
+                  stroke="#C8860A"
+                  stroke-width="1.5"
+                  fill="none"
+                  stroke-linecap="round"
+                  opacity="0.5"
+                />
+                <defs>
+                  <radialGradient id="coffee-grad" cx="50%" cy="50%">
+                    <stop offset="0%" stop-color="#5C3010" />
+                    <stop offset="100%" stop-color="#2A1200" />
+                  </radialGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scroll hint -->
+        <div
+          class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-kc-cream/30 text-xs font-body animate-bounce"
+        >
+          <span>scroll</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </div>
+      </section>
+
+      <!-- ══════════════════════ DESTACADOS ══════════════════════ -->
+      <section id="destacados" class="py-24 bg-kc-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center gap-4 mb-12">
+            <!-- Bean divider -->
+            <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
+              <ellipse cx="10" cy="6" rx="9" ry="5" stroke="#C8860A" stroke-width="1.2" />
+              <path d="M10 1 Q12.5 6 10 11" stroke="#C8860A" stroke-width="0.8" fill="none" />
+            </svg>
+            <div>
+              <p class="font-body text-xs uppercase tracking-widest text-kc-amber">
+                Selección del mes
+              </p>
+              <h2 class="font-display text-3xl sm:text-4xl font-bold text-kc-cream mt-0.5">
+                Productos Destacados
+              </h2>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <a
+              href="product-detail.html"
+              class="card-hover bg-kc-brown/25 border border-kc-brown/50 rounded-xl overflow-hidden block sm:col-span-2 lg:col-span-1"
+            >
+              <div
+                class="aspect-[4/3] bg-gradient-to-br from-kc-dark to-kc-brown/60 flex items-center justify-center relative"
+              >
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+                  <ellipse
+                    cx="50"
+                    cy="60"
+                    rx="32"
+                    ry="24"
+                    fill="#3D1F00"
+                    stroke="#C8860A"
+                    stroke-width="1"
+                  />
+                  <ellipse cx="50" cy="52" rx="28" ry="8" fill="#4A2800" />
+                  <rect
+                    x="30"
+                    y="35"
+                    width="40"
+                    height="18"
+                    rx="2"
+                    fill="#3D1F00"
+                    stroke="#C8860A"
+                    stroke-width="0.8"
+                  />
+                  <ellipse cx="50" cy="60" rx="14" ry="9" fill="#C8860A" opacity="0.18" />
+                </svg>
+                <span
+                  class="absolute top-3 right-3 bg-kc-amber text-kc-dark text-xs font-bold px-2 py-0.5 rounded"
+                  >NUEVO</span
+                >
+              </div>
+              <div class="p-5">
+                <p class="font-body text-xs text-kc-amber uppercase tracking-wider mb-1">Dulce</p>
+                <h3 class="font-display text-xl text-kc-cream font-semibold">Cheesecake</h3>
+                <p class="font-body text-sm text-kc-cream/50 mt-1 leading-relaxed">
+                  Cheescake estilo new york, con base de galletitas de vainilla, mermelada de mango
+                  y chantilly.
+                </p>
+                <div class="flex items-center justify-between mt-4">
+                  <span class="font-display text-2xl font-bold text-kc-amber">$6.200</span>
+                  <span class="font-body text-xs text-kc-cream/30">1 porcion</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 2 -->
+            <a
+              href="product-detail.html"
+              class="card-hover bg-kc-brown/25 border border-kc-brown/50 rounded-xl overflow-hidden block"
+            >
+              <div
+                class="aspect-[4/3] bg-gradient-to-br from-kc-brown/80 to-kc-dark flex items-center justify-center"
+              >
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+                  <rect
+                    x="20"
+                    y="35"
+                    width="60"
+                    height="50"
+                    rx="8"
+                    fill="#3D1F00"
+                    stroke="#C8860A"
+                    stroke-width="1"
+                  />
+                  <rect x="28" y="42" width="44" height="30" rx="4" fill="#2A1200" />
+                  <path
+                    d="M75 50 Q88 50 88 60 Q88 70 75 70"
+                    stroke="#C8860A"
+                    stroke-width="1.5"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                  <ellipse cx="50" cy="57" rx="18" ry="8" fill="#C8860A" opacity="0.15" />
+                </svg>
+              </div>
+              <div class="p-5">
+                <p class="font-body text-xs text-kc-amber uppercase tracking-wider mb-1">
+                  ESPRESSO
+                </p>
+                <h3 class="font-display text-xl text-kc-cream font-semibold">
+                  Latte Saborizado de Vainilla
+                </h3>
+                <p class="font-body text-sm text-kc-cream/50 mt-1 leading-relaxed">
+                  Equilibrado, con notas de caramelo y vainilla.
+                </p>
+                <div class="flex items-center justify-between mt-4">
+                  <span class="font-display text-2xl font-bold text-kc-amber">$4.800</span>
+                  <span class="font-body text-xs text-kc-cream/30">por 250ml</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 3 -->
+            <a
+              href="product-detail.html"
+              class="card-hover bg-kc-brown/25 border border-kc-brown/50 rounded-xl overflow-hidden block"
+            >
+              <div
+                class="aspect-[4/3] bg-gradient-to-br from-kc-brown to-kc-dark/80 flex items-center justify-center relative"
+              >
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+                  <ellipse
+                    cx="50"
+                    cy="65"
+                    rx="36"
+                    ry="28"
+                    fill="#3D1F00"
+                    stroke="#C8860A"
+                    stroke-width="1"
+                  />
+                  <path
+                    d="M50 37 C50 37 45 28 50 23 C55 18 60 25 57 30"
+                    stroke="#C8860A"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    fill="none"
+                  />
+                  <ellipse cx="50" cy="65" rx="18" ry="12" fill="#C8860A" opacity="0.2" />
+                </svg>
+                <span
+                  class="absolute top-3 left-3 bg-kc-brown/80 border border-kc-amber/40 text-kc-amber text-xs font-medium px-2 py-0.5 rounded"
+                  >POPULAR</span
+                >
+              </div>
+              <div class="p-5">
+                <p class="font-body text-xs text-kc-amber uppercase tracking-wider mb-1">
+                  DOBLE ESPRESSO
+                </p>
+                <h3 class="font-display text-xl text-kc-cream font-semibold">Flat White</h3>
+                <p class="font-body text-sm text-kc-cream/50 mt-1 leading-relaxed">
+                  El favorito de todos los días.
+                </p>
+                <div class="flex items-center justify-between mt-4">
+                  <span class="font-display text-2xl font-bold text-kc-amber">$4.900</span>
+                  <span class="font-body text-xs text-kc-cream/30">por 250ml</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="mt-10 text-center">
+            <a
+              href="product-detail.html"
+              class="inline-block px-8 py-3 border border-kc-amber/40 text-kc-amber hover:bg-kc-amber hover:text-kc-dark font-body text-sm font-medium rounded transition-colors"
+            >
+              Ver todos los productos →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════ STRIP: VALORES ══════════════════════ -->
+      <section class="py-16 bg-kc-brown/20 border-y border-kc-brown/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+            <div>
+              <p class="font-display text-4xl font-bold text-kc-amber">12+</p>
+              <p class="font-body text-sm text-kc-cream/60 mt-1">Orígenes seleccionados</p>
+            </div>
+            <div>
+              <p class="font-display text-4xl font-bold text-kc-amber">48h</p>
+              <p class="font-body text-sm text-kc-cream/60 mt-1">De tostado a tu puerta</p>
+            </div>
+            <div>
+              <p class="font-display text-4xl font-bold text-kc-amber">100%</p>
+              <p class="font-body text-sm text-kc-cream/60 mt-1">Comercio justo certificado</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-kc-brown/30 border-t border-kc-brown/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <span class="font-display text-lg font-bold text-kc-cream"
+              >Krass <span class="text-kc-amber">Coffee</span></span
+            >
+            <p class="mt-2 font-body text-sm text-kc-cream/50 leading-relaxed">
+              Café de especialidad con alma. Cada taza cuenta una historia desde el origen hasta tu
+              mesa.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-body text-xs uppercase tracking-widest text-kc-amber mb-3">
+              Navegación
+            </h4>
+            <ul class="space-y-2 font-body text-sm text-kc-cream/60">
+              <li><a href="index.html" class="hover:text-kc-amber transition-colors">Inicio</a></li>
+              <li>
+                <a href="product-detail.html" class="hover:text-kc-amber transition-colors"
+                  >Productos</a
+                >
+              </li>
+              <li><a href="cart.html" class="hover:text-kc-amber transition-colors">Carrito</a></li>
+              <li>
+                <a href="checkout.html" class="hover:text-kc-amber transition-colors">Checkout</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-body text-xs uppercase tracking-widest text-kc-amber mb-3">Contacto</h4>
+            <ul class="space-y-2 font-body text-sm text-kc-cream/60">
+              <li>📍 Gral. Lavalle 280, San Salvador de Jujuy</li>
+              <li>📞 +54 3884541092</li>
+              <li>✉️ krasscoffee@gmail.com</li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="mt-8 pt-6 border-t border-kc-brown/40 flex flex-col sm:flex-row items-center justify-between gap-2"
+        >
+          <div class="flex items-center gap-2">
+            <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+              <ellipse cx="8" cy="5" rx="7" ry="4" stroke="#C8860A" stroke-width="1" />
+              <path d="M8 1 Q10 5 8 9" stroke="#C8860A" stroke-width="0.8" fill="none" />
+            </svg>
+            <p class="font-body text-xs text-kc-cream/30">
+              © 2026 Krass Coffee. Todos los derechos reservados.
+            </p>
+          </div>
+          <p class="font-body text-xs text-kc-cream/20">Hecho con ☕ y mucho amor</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('menu-btn').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>
