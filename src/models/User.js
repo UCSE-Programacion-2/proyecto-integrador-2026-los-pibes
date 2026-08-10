@@ -20,4 +20,5 @@ const userSchema = new mongoose.Schema({
   timestamps: true // Esto agrega automáticamente la fecha de creación y actualización
 });
 
+
 module.exports = mongoose.model('User', userSchema);
